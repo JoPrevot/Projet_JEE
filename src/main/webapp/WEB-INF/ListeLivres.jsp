@@ -6,9 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Liste de livre</title>
+<link type="text/css" rel="stylesheet"
+	href="<c:url value="/inc/style.css" />" />
 </head>
 <body>
   <c:import url="/WEB-INF/menu.jsp" />
+  <a href="<c:url value="/ajouterLivre" />"><button>Ajouter un livre</button></a>
   <c:choose>
     <c:when test="${ empty livres }">
        <p>Aucun livre trouvé…</p>

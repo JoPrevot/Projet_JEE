@@ -13,13 +13,13 @@ import dao.DaoFactory;
 import model.Auteur;
 
 
-@WebServlet("/ajouterAuteur")
-public class AjouterAuteur extends HttpServlet {
+@WebServlet("/updateAuteur")
+public class UpdateAuteur extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private Dao<Auteur> auteurDao;
 
-    public AjouterAuteur() 
+    public UpdateAuteur() 
     {
         super();
         auteurDao = DaoFactory.getInstance().getAuteurDao();
@@ -28,7 +28,18 @@ public class AjouterAuteur extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		this.getServletContext().getRequestDispatcher("/WEB-INF/ajouterAuteur.jsp").forward(request, response);
+		long idAuteur = Long.parseLong(request.getParameter("id"));
+		
+		try
+		{
+			request.setAttribute("auteur", auteurDao.trouver(idAuteur));
+		}
+		catch (DaoException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		this.getServletContext().getRequestDispatcher("/WEB-INF/updateAuteur.jsp").forward(request, response);
 		
 	}
 
@@ -39,17 +50,22 @@ public class AjouterAuteur extends HttpServlet {
 		String prenom = request.getParameter("prenomAuteur");
 		String telephone = request.getParameter("telephoneAuteur");
 		String email = request.getParameter("emailAuteur");
+		String id = request.getParameter("id");
 		
 		Auteur auteur = new Auteur();
 		
-		auteur.setNom(nom);
-		auteur.setPrenom(prenom);
-		auteur.setTelephone(telephone);
-		auteur.setEmail(email);
+		long idAuteur = Long.parseLong(id);
 		
 		try
 		{
-			auteurDao.creer(auteur);
+			auteur = auteurDao.trouver(idAuteur);
+			
+			auteur.setNom(nom);
+			auteur.setPrenom(prenom);
+			auteur.setTelephone(telephone);
+			auteur.setEmail(email);
+		
+			auteurDao.mettreajour(auteur);
 		}
 		catch (DaoException e) 
 		{

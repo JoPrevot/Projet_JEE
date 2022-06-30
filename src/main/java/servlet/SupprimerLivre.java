@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import dao.Dao;
 import dao.DaoException;
 import dao.DaoFactory;
-import model.Auteur;
 import model.Livre;
 
 /**

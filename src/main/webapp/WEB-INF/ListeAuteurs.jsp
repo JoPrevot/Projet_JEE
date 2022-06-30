@@ -6,13 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Liste d'auteurs</title>
-<link rel="stylesheet" href="/webapp/inc/style.css">
+<link type="text/css" rel="stylesheet"
+	href="<c:url value="/inc/style.css" />" />
 </head>
 <body>
   <c:import url="/WEB-INF/menu.jsp" />
+  <a href="<c:url value="/ajouterAuteur" />"><button>Ajouter un auteur</button></a>
   <c:choose>
     <c:when test="${ empty auteurs }">
-       <p>Aucun auteur trouvé…</p>
+       <p>Aucun auteur trouvé …</p>
     </c:when>
     <c:otherwise>
        <table>
@@ -34,6 +36,12 @@
                         <a href="<c:url value="/liste-auteurs">
                           <c:param name="id" value="${auteur.id }"/>
                         </c:url>">Voir les détails de l'auteur
+                        </a>
+                    </td>
+                    <td>
+                        <a href="<c:url value="/updateAuteur">
+                          <c:param name="id" value="${auteur.id }"/>
+                        </c:url>">Modifier l'auteur
                         </a>
                     </td>
                     <td>
