@@ -11,7 +11,9 @@
 </head>
 <body>
   <c:import url="/WEB-INF/menu.jsp" />
-  <a href="<c:url value="/ajouterLivre" />"><button>Ajouter un livre</button></a>
+  </br>
+  <div><a href="<c:url value="/ajouterLivre" />"><button>Ajouter un livre</button></a></div>
+  </br>
   <c:choose>
     <c:when test="${ empty livres }">
        <p>Aucun livre trouvé…</p>
@@ -23,7 +25,7 @@
            <th>Titre</th>
            <th>nbPages</th>
            <th>catégorie</th>
-           <th colspan="2"> Actions </th>
+           <th colspan="3"> Actions </th>
          </thead>
          <tbody>
             <c:forEach items="${ livres }" var="livre">
@@ -37,6 +39,12 @@
                           <c:param name="id" value="${livre.id }"/>
                         </c:url>">Voir les détails du livre
                        </a>
+                    </td>
+                    <td>
+                        <a href="<c:url value="/updateLivre">
+                          <c:param name="id" value="${livre.id }"/>
+                        </c:url>">Modifier le livre
+                        </a>
                     </td>
                     <td>
                        <a href="<c:url value="/SupprimerLivre">

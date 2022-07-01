@@ -11,7 +11,7 @@
 	<c:import url="/WEB-INF/menu.jsp" />
 	
 	<div class="form">
-		<form method="post" action="<c:url value="/updateAuteur" />">
+		<form method="post" action="<c:url value="/updateAuteur" />"></br>
 
 			<fieldset>
 				<legend>Modifier un auteur</legend>
@@ -31,8 +31,10 @@
 				<label for="emailAuteur">Email</label>
 				<input type="email" id="emailAuteur" name="emailAuteur" size="60" value="${ auteur.email }"/>
 				<br/>
+				
+				<input type="hidden" id="idAuteur" name="idAuteur" value="${ auteur.id }"/>
 
-			</fieldset>
+			</fieldset></br>
 
 			<input type="submit" value="Valider" />
 			<input type="reset" value="Remettre à zéro" />

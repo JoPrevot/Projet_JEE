@@ -50,12 +50,11 @@ public class UpdateAuteur extends HttpServlet {
 		String prenom = request.getParameter("prenomAuteur");
 		String telephone = request.getParameter("telephoneAuteur");
 		String email = request.getParameter("emailAuteur");
-		String id = request.getParameter("id");
-		
-		Auteur auteur = new Auteur();
-		
+		String id = request.getParameter("idAuteur");
 		long idAuteur = Long.parseLong(id);
 		
+		Auteur auteur = new Auteur();
+	
 		try
 		{
 			auteur = auteurDao.trouver(idAuteur);

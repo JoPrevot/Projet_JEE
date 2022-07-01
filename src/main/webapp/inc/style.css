@@ -1,0 +1,35 @@
+table
+{
+	border-collapse:collapse;
+	width: 75%;
+	text-align:center;
+}
+
+td 
+{ 
+ 	text-align:center;
+}
+ 
+ th 
+{ 
+  	background-color:#33FFBE;
+ 	text-align:center;
+}
+
+tbody > tr:nth-child(odd)
+{
+    background-color:#EEEEEE;
+}
+
+tbody > tr:nth-child(even)
+{
+    background-color:#B9D7CE;
+}
+
+.menu
+{
+	background-color: #33FFBE;
+	align-content: center;
+	align-self: center;
+	width: 75%;
+}

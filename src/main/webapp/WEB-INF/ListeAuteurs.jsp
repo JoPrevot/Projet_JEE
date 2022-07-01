@@ -11,7 +11,9 @@
 </head>
 <body>
   <c:import url="/WEB-INF/menu.jsp" />
-  <a href="<c:url value="/ajouterAuteur" />"><button>Ajouter un auteur</button></a>
+  </br>
+  <div><a href="<c:url value="/ajouterAuteur" />"><button>Ajouter un auteur</button></a></div>
+  </br>
   <c:choose>
     <c:when test="${ empty auteurs }">
        <p>Aucun auteur trouvé …</p>
@@ -23,7 +25,7 @@
            <th>Prénom</th>
            <th>Téléphone</th>
            <th>Email</th>
-           <th colspan="2">Actions</th>
+           <th colspan="3">Actions</th>
          </thead>
          <tbody>
             <c:forEach items="${ auteurs }" var="auteur">
